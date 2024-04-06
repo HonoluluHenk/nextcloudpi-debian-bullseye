@@ -9,7 +9,7 @@ source /usr/local/etc/library.sh # sets NCLATESTVER PHPVER RELEASE
 # all images
 
 # make sure these are installed as well in all upgrade paths
-apt_install php${PHPVER}-gmp haveged lsb-release php-smbclient exfat-fuse exfat-utils file
+apt_install php${PHPVER}-gmp haveged lsb-release php-smbclient exfat-fuse exfatprogs file
 
 # for NC19.0.1
 apt_install php-bcmath

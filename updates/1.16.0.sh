@@ -9,7 +9,7 @@ source /usr/local/etc/library.sh
 # all images
 
 # restore smbclient after dist upgrade
-apt_install php-smbclient exfat-fuse exfat-utils
+apt_install php-smbclient exfat-fuse exfatprogs
 
 # install lsb-release
 apt_install lsb-release

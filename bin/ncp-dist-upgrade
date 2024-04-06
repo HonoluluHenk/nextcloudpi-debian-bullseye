@@ -82,7 +82,7 @@ $APTINSTALL -t ${release_new} php${php_ver_new} php${php_ver_new}-curl php${php_
 $APTINSTALL php${php_ver_new}-mysql
 $APTINSTALL -t ${release_new} php${php_ver_new}-redis
 
-$APTINSTALL -t ${release_new} smbclient exfat-fuse exfat-utils
+$APTINSTALL -t ${release_new} smbclient exfat-fuse exfatprogs
 sleep 2 # avoid systemd thinking that PHP is in a crash/restart loop
 $APTINSTALL -t ${release_new} php${php_ver_new}-exif
 sleep 2 # avoid systemd thinking that PHP is in a crash/restart loop

@@ -29,7 +29,7 @@ install()
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     echo "deb https://packages.sury.org/php/ ${RELEASE%-security} main" > /etc/apt/sources.list.d/php.list
     apt-get update
-    $APTINSTALL apt-utils cron curl
+    $APTINSTALL apt-utils cron curl systemd-resolved
     ls -l /var/lock || true
     $APTINSTALL apache2
     # Fix missing lock directory
@@ -37,10 +37,14 @@ install()
     apache2ctl -V || true
 
     # Create systemd users to keep uids persistent between containers
-    id -u systemd-resolve || {
+    id -u systemd-journal || {
       addgroup --quiet --system systemd-journal
+    }
+     id -u systemd-network || {
       adduser --quiet -u 180 --system --group --no-create-home --home /run/systemd \
         --gecos "systemd Network Management" systemd-network
+    }
+     id -u systemd-resolve || {
       adduser --quiet -u 181 --system --group --no-create-home --home /run/systemd \
         --gecos "systemd Resolver" systemd-resolve
     }
